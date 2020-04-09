@@ -2,7 +2,7 @@ const express = require('express');
 const route   = express.Router();
 const jwt     = require('../utils/jwt');
 
-var users = [{ id: 1, username: 'admin', password: 'admin' }]
+let users = require('./auth.repository');
 
 route.post('/login', (req, res) => {
     if(!req.body)
