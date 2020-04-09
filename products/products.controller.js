@@ -7,10 +7,9 @@ route.use(jwt.authMiddleware);
 let products = require('./products.repository');
 
 route.get('/search', function (req, res) {
-    let result = products.filter(x => (!req.query.name || x.name.includes(req.query.name)) &&
-                                      (!req.query.id || x.id == req.query.id) &&
-                                      (!req.query.desc || x.desc.includes(req.query.desc)) &&
-                                      (!req.query.position || x.position.includes(req.query.position))
+    let result = products.filter(x => (!req.query.name.toUpperCase || x.name.toUpperCase().includes(req.query.name.toUpperCase())) &&
+                                      (!req.query.cod || x.cod.toUpperCase() == req.query.cod.toUpperCase()) &&
+                                      (!req.query.position || x.position.toUpperCase().includes(req.query.position.toUpperCase()))
     );
     res.send(result);
 });
