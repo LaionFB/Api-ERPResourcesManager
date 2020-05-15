@@ -19,6 +19,11 @@ route.get('/getById', function (req, res) {
     res.send(result);
 });
 
+route.get('/getByCode', function (req, res) {
+    let result = products.find(x => x.cod == req.query.code);
+    res.send(result);
+});
+
 route.post('/save', function (req, res) {
     let item = products.find(x => x.id = req.body.id);
     item.qtd = req.body.qtd;
